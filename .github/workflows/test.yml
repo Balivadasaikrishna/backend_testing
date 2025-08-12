@@ -42,4 +42,4 @@ jobs:
         path: coverage/
     
     - name: Test example usage
-      run: node dist/example-usage.js
+      run: npm start
