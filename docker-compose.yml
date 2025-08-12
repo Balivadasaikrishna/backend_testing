@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    ports:
+      - "3000:3000"
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ./src:/app/src
+      - ./dist:/app/dist
+    command: npm run start
+
+  test:
+    build: .
+    environment:
+      - NODE_ENV=test
+    volumes:
+      - ./src:/app/src
+      - ./dist:/app/dist
+    command: npm test
+
+  test-coverage:
+    build: .
+    environment:
+      - NODE_ENV=test
+    volumes:
+      - ./src:/app/src
+      - ./dist:/app/dist
+      - ./coverage:/app/coverage
+    command: npm run test:coverage
